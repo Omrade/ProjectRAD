@@ -1,0 +1,4 @@
+#gitignore for progetcs One
+Debug/
+x64/
+.vs/
