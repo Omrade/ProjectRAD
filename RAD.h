@@ -125,6 +125,7 @@ namespace ProjectRAD {
 			this->ôàéëToolStripMenuItem->Name = L"ôàéëToolStripMenuItem";
 			this->ôàéëToolStripMenuItem->Size = System::Drawing::Size(48, 20);
 			this->ôàéëToolStripMenuItem->Text = L"Ôàéë";
+			this->ôàéëToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::ôàéëToolStripMenuItem_Click);
 			// 
 			// äåéñòâèÿToolStripMenuItem1
 			// 
@@ -140,19 +141,19 @@ namespace ProjectRAD {
 			// äîáàâèòüToolStripMenuItem
 			// 
 			this->äîáàâèòüToolStripMenuItem->Name = L"äîáàâèòüToolStripMenuItem";
-			this->äîáàâèòüToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->äîáàâèòüToolStripMenuItem->Size = System::Drawing::Size(128, 22);
 			this->äîáàâèòüToolStripMenuItem->Text = L"Äîáàâèòü";
 			// 
 			// îáíîâèòüToolStripMenuItem
 			// 
 			this->îáíîâèòüToolStripMenuItem->Name = L"îáíîâèòüToolStripMenuItem";
-			this->îáíîâèòüToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->îáíîâèòüToolStripMenuItem->Size = System::Drawing::Size(128, 22);
 			this->îáíîâèòüToolStripMenuItem->Text = L"Èçìåíèòü";
 			// 
 			// óäàëèòüToolStripMenuItem
 			// 
 			this->óäàëèòüToolStripMenuItem->Name = L"óäàëèòüToolStripMenuItem";
-			this->óäàëèòüToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->óäàëèòüToolStripMenuItem->Size = System::Drawing::Size(128, 22);
 			this->óäàëèòüToolStripMenuItem->Text = L"Óäàëèòü";
 			// 
 			// îÏğîãğàììåToolStripMenuItem
@@ -160,12 +161,14 @@ namespace ProjectRAD {
 			this->îÏğîãğàììåToolStripMenuItem->Name = L"îÏğîãğàììåToolStripMenuItem";
 			this->îÏğîãğàììåToolStripMenuItem->Size = System::Drawing::Size(94, 20);
 			this->îÏğîãğàììåToolStripMenuItem->Text = L"Î ïğîãğàììå";
+			this->îÏğîãğàììåToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::îÏğîãğàììåToolStripMenuItem_Click);
 			// 
 			// âûõîäToolStripMenuItem
 			// 
 			this->âûõîäToolStripMenuItem->Name = L"âûõîäToolStripMenuItem";
 			this->âûõîäToolStripMenuItem->Size = System::Drawing::Size(53, 20);
 			this->âûõîäToolStripMenuItem->Text = L"Âûõîä";
+			this->âûõîäToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::âûõîäToolStripMenuItem_Click);
 			// 
 			// groupBox1
 			// 
@@ -216,7 +219,7 @@ namespace ProjectRAD {
 			});
 			this->dataGridView1->Location = System::Drawing::Point(106, 27);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(790, 302);
+			this->dataGridView1->Size = System::Drawing::Size(790, 314);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &RAD::dataGridView1_CellContentClick);
 			// 
@@ -266,13 +269,13 @@ namespace ProjectRAD {
 
 		}
 #pragma endregion
-	private: System::Void äåéñòâèÿToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void äåéñòâèÿToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-}
+		
+		private: System::Void ôàéëToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void äåéñòâèÿToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void îÏğîãğàììåToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void âûõîäToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+
 };
 }
