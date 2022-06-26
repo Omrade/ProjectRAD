@@ -95,7 +95,6 @@ System::Void ProjectRAD::RAD::button_add_Click(System::Object^ sender, System::E
 	String^ Quantity_pcs = dataGridView1->Rows[index]->Cells[4]->Value->ToString();
 	String^ Notes = dataGridView1->Rows[index]->Cells[5]->Value->ToString();
 	
-
 	//Подключение к базе данных
 	String^ connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=RADBase.mdb";																				//Строка подключения
 	OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
@@ -119,11 +118,100 @@ System::Void ProjectRAD::RAD::button_add_Click(System::Object^ sender, System::E
 
 System::Void ProjectRAD::RAD::button_change_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	//Выбор нужной строки для добавления
+	if (dataGridView1->SelectedRows->Count != 1) 
+	{
+		MessageBox::Show("Выберите одну строку для изменения!", "Внимание!");
+		return;
+	}
+
+	//Узанаем индекс выбранной строки
+	int index = dataGridView1->SelectedRows[0]->Index;
+
+	//Проверка данных
+	if (dataGridView1->Rows[index]->Cells[0]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[1]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[2]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[3]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[4]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[5]->Value == nullptr)
+	{
+		MessageBox::Show("Не все данные введены!", "Внимание!");
+		return;
+	}
+
+	//Ститывание данных
+	String^ ID = dataGridView1->Rows[index]->Cells[0]->Value->ToString();
+	String^ Name = dataGridView1->Rows[index]->Cells[1]->Value->ToString();
+	String^ Shifr = dataGridView1->Rows[index]->Cells[2]->Value->ToString();
+	String^ Denomination = dataGridView1->Rows[index]->Cells[3]->Value->ToString();
+	String^ Quantity_pcs = dataGridView1->Rows[index]->Cells[4]->Value->ToString();
+	String^ Notes = dataGridView1->Rows[index]->Cells[5]->Value->ToString();
+
+	//Подключение к базе данных
+	String^ connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=RADBase.mdb";																																//Строка подключения
+	OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+	//Выполнение запроса к базе данных 
+	dbConnection->Open();																																																//Открытие соеденения
+	String^ query = "UPDATE [RADBase] SET Name= '" + Name + "', Shifr =  '" + Shifr + "', Denomination = '" + Denomination + "', Quantity_pcs = " + Quantity_pcs + ", Notes = '" + Notes + "' WHERE id = " + ID;		//Запрос
+	OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);
+
+	//Выполнение запроса
+	if (dbComand->ExecuteNonQuery() != 1)
+		MessageBox::Show("Ошибка выполнения запроса!", "Ошибка!");
+	else
+		MessageBox::Show("Данные изменены!", "Готово!");
+
+	//Закрытие соединения к базе данных
+	dbConnection->Close();
+
 	return System::Void();
 }
 
 System::Void ProjectRAD::RAD::button_delete_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	//Выбор нужной строки для добавления
+	if (dataGridView1->SelectedRows->Count != 1)
+	{
+		MessageBox::Show("Выберите одну строку для удаления!", "Внимание!");
+		return;
+	}
+
+	//Узанаем индекс выбранной строки
+	int index = dataGridView1->SelectedRows[0]->Index;
+
+	//Проверка данных
+	if (dataGridView1->Rows[index]->Cells[0]->Value == nullptr)
+	{
+		MessageBox::Show("Не все данные введены!", "Внимание!");
+		return;
+	}
+
+	//Ститывание данных
+	String^ ID = dataGridView1->Rows[index]->Cells[0]->Value->ToString();
+	
+	//Подключение к базе данных
+	String^ connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=RADBase.mdb";		//Строка подключения
+	OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+	//Выполнение запроса к базе данных 
+	dbConnection->Open();																		//Открытие соеденения
+	String^ query = "DELETE FROM [RADBase] WHERE id = " + ID;									//Запрос
+	OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);
+
+	//Выполняем запрос
+	if (dbComand->ExecuteNonQuery() != 1)
+		MessageBox::Show("Ошибка выполнения запроса!", "Ошибка!");
+	else 
+	{
+		MessageBox::Show("Данные удалены!", "Готово!");
+		dataGridView1->Rows->RemoveAt(index);													//Удаление строки из таблицы формы
+	}
+
+	//Закрытие соединения к базе данных
+	dbConnection->Close();
+
 	return System::Void();
 }
 
