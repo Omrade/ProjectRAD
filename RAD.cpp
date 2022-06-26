@@ -22,14 +22,14 @@ System::Void ProjectRAD::RAD::File_ToolStripMenuItem_Click(System::Object^ sende
 System::Void ProjectRAD::RAD::DownloadDB_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	//Подключение к базе данных
-	String^ connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=RADBase.mdb";//Строка подключения
+	String^ connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=RADBase.mdb";					//Строка подключения
 	OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
 	//Выполнение запроса к базе данных
-	dbConnection->Open();//открытие соеденения
-	String^ query = "SELECT * FROM [RADBase]";//запрос
-	OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);//команда
-	OleDbDataReader^ dbReader = dbComand->ExecuteReader();//считывание данных
+	dbConnection->Open();																					//Открытие соеденения
+	String^ query = "SELECT * FROM [RADBase]";																//Запрос
+	OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);										//Команда
+	OleDbDataReader^ dbReader = dbComand->ExecuteReader();													//Считывание данных
 
 	//Проверяем данные
 	if (dbReader->HasRows == false) 
@@ -66,6 +66,54 @@ System::Void ProjectRAD::RAD::Exit_ToolStripMenuItem_Click(System::Object^ sende
 
 System::Void ProjectRAD::RAD::button_add_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	//Выбор нужной строки для добавления
+	if (dataGridView1->SelectedRows->Count != 1) {
+		MessageBox::Show("Выберите одну строку для добавления!", "Внимание!");
+		return;
+	}
+
+	//Узанаем индекс выбранной строки
+	int index = dataGridView1->SelectedRows[0]->Index;
+
+	//Проверка данных
+	if (dataGridView1->Rows[index]->Cells[0]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[1]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[2]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[3]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[4]->Value == nullptr ||
+		dataGridView1->Rows[index]->Cells[5]->Value == nullptr) 
+	{
+		MessageBox::Show("Не все данные введены!", "Внимание!");
+		return;
+	}
+
+	//Ститывание данных
+	String^ ID = dataGridView1->Rows[index]->Cells[0]->Value->ToString();
+	String^ Name = dataGridView1->Rows[index]->Cells[1]->Value->ToString();
+	String^ Shifr = dataGridView1->Rows[index]->Cells[2]->Value->ToString();
+	String^ Denomination = dataGridView1->Rows[index]->Cells[3]->Value->ToString();
+	String^ Quantity_pcs = dataGridView1->Rows[index]->Cells[4]->Value->ToString();
+	String^ Notes = dataGridView1->Rows[index]->Cells[5]->Value->ToString();
+	
+
+	//Подключение к базе данных
+	String^ connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=RADBase.mdb";																				//Строка подключения
+	OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+	//Выполнение запроса к базе данных 
+	dbConnection->Open();																																				//Открытие соеденения
+	String^ query = "INSERT INTO [RADBase] VALUES (" + ID + ",'" + Name + "', '" + Shifr + "', '" + Denomination + "', " + Quantity_pcs + ", '" + Notes + "')";		//Запрос
+	OleDbCommand^ dbComand = gcnew OleDbCommand(query, dbConnection);																									//Команда
+
+	//Выполнение запроса
+	if (dbComand->ExecuteNonQuery() != 1)
+		MessageBox::Show("Ошибка выполнения запроса!", "Ошибка!");
+	else
+		MessageBox::Show("Данные добавлены!", "Готово!");
+
+	//Закрытие соединения к базе данных
+	dbConnection->Close();
+
 	return System::Void();
 }
 
