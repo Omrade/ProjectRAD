@@ -36,10 +36,10 @@ namespace ProjectRAD {
 		}
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ Ù‡ÈÎToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ‰ÂÈÒÚ‚ËˇToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripMenuItem^ ‰Ó·‡‚ËÚ¸ToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ Ó·ÌÓ‚ËÚ¸ToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ Û‰‡ÎËÚ¸ToolStripMenuItem;
+
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ ÓœÓ„‡ÏÏÂToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ‚˚ıÓ‰ToolStripMenuItem;
 
@@ -53,12 +53,35 @@ namespace ProjectRAD {
 
 	private: System::Windows::Forms::Button^ button_add;
 
+
+
+
+
+
+
+	private: System::Windows::Forms::ToolStripMenuItem^ DownloadDB;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ name;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Shifr;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Denomination;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Quantity_pcs;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Notes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -87,10 +110,7 @@ namespace ProjectRAD {
 		{
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->Ù‡ÈÎToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->‰ÂÈÒÚ‚ËˇToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->‰Ó·‡‚ËÚ¸ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->Ó·ÌÓ‚ËÚ¸ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->Û‰‡ÎËÚ¸ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->DownloadDB = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ÓœÓ„‡ÏÏÂToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->‚˚ıÓ‰ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
@@ -98,6 +118,7 @@ namespace ProjectRAD {
 			this->button_change = (gcnew System::Windows::Forms::Button());
 			this->button_add = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->name = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Shifr = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Denomination = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -110,9 +131,9 @@ namespace ProjectRAD {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->Ù‡ÈÎToolStripMenuItem,
-					this->‰ÂÈÒÚ‚ËˇToolStripMenuItem1, this->ÓœÓ„‡ÏÏÂToolStripMenuItem, this->‚˚ıÓ‰ToolStripMenuItem
+					this->ÓœÓ„‡ÏÏÂToolStripMenuItem, this->‚˚ıÓ‰ToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -122,53 +143,32 @@ namespace ProjectRAD {
 			// 
 			// Ù‡ÈÎToolStripMenuItem
 			// 
+			this->Ù‡ÈÎToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->DownloadDB });
 			this->Ù‡ÈÎToolStripMenuItem->Name = L"Ù‡ÈÎToolStripMenuItem";
 			this->Ù‡ÈÎToolStripMenuItem->Size = System::Drawing::Size(48, 20);
 			this->Ù‡ÈÎToolStripMenuItem->Text = L"‘‡ÈÎ";
-			this->Ù‡ÈÎToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::Ù‡ÈÎToolStripMenuItem_Click);
+			this->Ù‡ÈÎToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::File_ToolStripMenuItem_Click);
 			// 
-			// ‰ÂÈÒÚ‚ËˇToolStripMenuItem1
+			// DownloadDB
 			// 
-			this->‰ÂÈÒÚ‚ËˇToolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->‰Ó·‡‚ËÚ¸ToolStripMenuItem,
-					this->Ó·ÌÓ‚ËÚ¸ToolStripMenuItem, this->Û‰‡ÎËÚ¸ToolStripMenuItem
-			});
-			this->‰ÂÈÒÚ‚ËˇToolStripMenuItem1->Name = L"‰ÂÈÒÚ‚ËˇToolStripMenuItem1";
-			this->‰ÂÈÒÚ‚ËˇToolStripMenuItem1->Size = System::Drawing::Size(70, 20);
-			this->‰ÂÈÒÚ‚ËˇToolStripMenuItem1->Text = L"ƒÂÈÒÚ‚Ëˇ";
-			this->‰ÂÈÒÚ‚ËˇToolStripMenuItem1->Click += gcnew System::EventHandler(this, &RAD::‰ÂÈÒÚ‚ËˇToolStripMenuItem1_Click);
-			// 
-			// ‰Ó·‡‚ËÚ¸ToolStripMenuItem
-			// 
-			this->‰Ó·‡‚ËÚ¸ToolStripMenuItem->Name = L"‰Ó·‡‚ËÚ¸ToolStripMenuItem";
-			this->‰Ó·‡‚ËÚ¸ToolStripMenuItem->Size = System::Drawing::Size(128, 22);
-			this->‰Ó·‡‚ËÚ¸ToolStripMenuItem->Text = L"ƒÓ·‡‚ËÚ¸";
-			// 
-			// Ó·ÌÓ‚ËÚ¸ToolStripMenuItem
-			// 
-			this->Ó·ÌÓ‚ËÚ¸ToolStripMenuItem->Name = L"Ó·ÌÓ‚ËÚ¸ToolStripMenuItem";
-			this->Ó·ÌÓ‚ËÚ¸ToolStripMenuItem->Size = System::Drawing::Size(128, 22);
-			this->Ó·ÌÓ‚ËÚ¸ToolStripMenuItem->Text = L"»ÁÏÂÌËÚ¸";
-			// 
-			// Û‰‡ÎËÚ¸ToolStripMenuItem
-			// 
-			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Name = L"Û‰‡ÎËÚ¸ToolStripMenuItem";
-			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Size = System::Drawing::Size(128, 22);
-			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Text = L"”‰‡ÎËÚ¸";
+			this->DownloadDB->Name = L"DownloadDB";
+			this->DownloadDB->Size = System::Drawing::Size(198, 22);
+			this->DownloadDB->Text = L"«‡„ÛÁËÚ¸ ·‡ÁÛ ‰‡ÌÌ˚ı";
+			this->DownloadDB->Click += gcnew System::EventHandler(this, &RAD::DownloadDB_Click);
 			// 
 			// ÓœÓ„‡ÏÏÂToolStripMenuItem
 			// 
 			this->ÓœÓ„‡ÏÏÂToolStripMenuItem->Name = L"ÓœÓ„‡ÏÏÂToolStripMenuItem";
 			this->ÓœÓ„‡ÏÏÂToolStripMenuItem->Size = System::Drawing::Size(94, 20);
 			this->ÓœÓ„‡ÏÏÂToolStripMenuItem->Text = L"Œ ÔÓ„‡ÏÏÂ";
-			this->ÓœÓ„‡ÏÏÂToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::ÓœÓ„‡ÏÏÂToolStripMenuItem_Click);
+			this->ÓœÓ„‡ÏÏÂToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::About_The_Program_ToolStripMenuItem_Click);
 			// 
 			// ‚˚ıÓ‰ToolStripMenuItem
 			// 
 			this->‚˚ıÓ‰ToolStripMenuItem->Name = L"‚˚ıÓ‰ToolStripMenuItem";
 			this->‚˚ıÓ‰ToolStripMenuItem->Size = System::Drawing::Size(53, 20);
 			this->‚˚ıÓ‰ToolStripMenuItem->Text = L"¬˚ıÓ‰";
-			this->‚˚ıÓ‰ToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::‚˚ıÓ‰ToolStripMenuItem_Click);
+			this->‚˚ıÓ‰ToolStripMenuItem->Click += gcnew System::EventHandler(this, &RAD::Exit_ToolStripMenuItem_Click);
 			// 
 			// groupBox1
 			// 
@@ -185,12 +185,13 @@ namespace ProjectRAD {
 			// 
 			// button_delete
 			// 
-			this->button_delete->Location = System::Drawing::Point(7, 77);
+			this->button_delete->Location = System::Drawing::Point(6, 77);
 			this->button_delete->Name = L"button_delete";
 			this->button_delete->Size = System::Drawing::Size(75, 23);
 			this->button_delete->TabIndex = 2;
 			this->button_delete->Text = L"”‰‡ÎËÚ¸";
 			this->button_delete->UseVisualStyleBackColor = true;
+			this->button_delete->Click += gcnew System::EventHandler(this, &RAD::button_delete_Click);
 			// 
 			// button_change
 			// 
@@ -200,28 +201,35 @@ namespace ProjectRAD {
 			this->button_change->TabIndex = 1;
 			this->button_change->Text = L"»ÁÏÂÌËÚ¸";
 			this->button_change->UseVisualStyleBackColor = true;
+			this->button_change->Click += gcnew System::EventHandler(this, &RAD::button_change_Click);
 			// 
 			// button_add
 			// 
-			this->button_add->Location = System::Drawing::Point(6, 19);
+			this->button_add->Location = System::Drawing::Point(7, 19);
 			this->button_add->Name = L"button_add";
 			this->button_add->Size = System::Drawing::Size(75, 23);
 			this->button_add->TabIndex = 0;
 			this->button_add->Text = L"ƒÓ·‡‚ËÚ¸";
 			this->button_add->UseVisualStyleBackColor = true;
+			this->button_add->Click += gcnew System::EventHandler(this, &RAD::button_add_Click);
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->name, this->Shifr,
-					this->Denomination, this->Quantity_pcs, this->Notes
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+				this->ID, this->name,
+					this->Shifr, this->Denomination, this->Quantity_pcs, this->Notes
 			});
 			this->dataGridView1->Location = System::Drawing::Point(106, 27);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->Size = System::Drawing::Size(790, 314);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &RAD::dataGridView1_CellContentClick);
+			// 
+			// ID
+			// 
+			this->ID->HeaderText = L"ID";
+			this->ID->Name = L"ID";
 			// 
 			// name
 			// 
@@ -270,12 +278,17 @@ namespace ProjectRAD {
 		}
 #pragma endregion
 		
-		private: System::Void Ù‡ÈÎToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-		private: System::Void ‰ÂÈÒÚ‚ËˇToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e);
-		private: System::Void ÓœÓ„‡ÏÏÂToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-		private: System::Void ‚˚ıÓ‰ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void File_ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void button_change_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void button_delete_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void About_The_Program_ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void Exit_ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+		private: System::Void DownloadDB_Click(System::Object^ sender, System::EventArgs^ e);
+		
+
 
 };
 }
